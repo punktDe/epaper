@@ -1,0 +1,21 @@
+PunktDe.EPaper:Content.EPaperLink:
+  superTypes:
+    Neos.Neos:Content: true
+    PunktDe.EPaper:Mixins.EPaperLink: true
+  abstract: false
+  ui:
+    label: E-Paper Link
+    icon: fas fa-tablet-alt
+    group: special
+    inspector:
+      groups:
+        default:
+          label: Settings
+  properties:
+    caption:
+      type: string
+      ui:
+        inlineEditable: true
+        inline:
+          editorOptions:
+            placeholder: caption

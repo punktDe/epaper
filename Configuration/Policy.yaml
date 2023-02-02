@@ -1,0 +1,11 @@
+privilegeTargets:
+  'Neos\Flow\Security\Authorization\Privilege\Method\MethodPrivilege':
+    'PunktDe.EPaper':
+      matcher: 'method(PunktDe\EPaper\Controller\EPaperController->serveAction())'
+
+roles:
+  'Neos.Flow:Everybody':
+    privileges:
+      -
+        privilegeTarget: 'PunktDe.EPaper'
+        permission: GRANT

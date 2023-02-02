@@ -1,0 +1,3 @@
+PunktDe:
+  EPaper:
+    extractedEPaperCacheDir: '%FLOW_PATH_DATA%/Persistent/Cache/Data/EPaper'

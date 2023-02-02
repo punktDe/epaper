@@ -1,0 +1,10 @@
+-
+  name: 'Serve HTML Pub File'
+  uriPattern: 'epaper/{nodeIdentifier}/{filePath}'
+  defaults:
+    '@package': 'PunktDe.EPaper'
+    '@controller': 'EPaper'
+    '@action': 'serve'
+  routeParts:
+    'filePath':
+      handler: 'PunktDe\EPaper\RoutePartHandler\PathMatchingRoutePartHandler'

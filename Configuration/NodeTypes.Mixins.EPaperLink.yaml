@@ -1,0 +1,11 @@
+PunktDe.EPaper:Mixins.EPaperLink:
+  abstract: true
+  properties:
+    ePaper:
+      type: Neos\Media\Domain\Model\Asset
+      ui:
+        label: E-Paper packed as a zip
+        reloadIfChanged: true
+        inspector:
+          group: default
+          position: 50

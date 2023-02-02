@@ -1,0 +1,23 @@
+prototype(PunktDe.EPaper:Content.EPaperLink) < prototype(Neos.Neos:ContentComponent) {
+    
+    linkClasses = ''
+    
+    href = Neos.Fusion:UriBuilder {
+        package = 'PunktDe.EPaper'
+        controller = 'EPaper'
+        action = 'serve'
+        arguments {
+            nodeIdentifier = ${node.identifier}
+            filePath = 'index.html'
+        }
+        @if.notInBackend = ${!node.context.inBackend}
+    }
+    
+    caption = Neos.Neos:Editable {
+        property = 'caption'
+    }
+
+    renderer = afx`
+        <a href={props.href} class={props.linkClasses}>{props.caption}</a>
+    `
+}

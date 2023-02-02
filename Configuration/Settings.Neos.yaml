@@ -1,0 +1,11 @@
+Neos:
+  Neos:
+    fusion:
+      autoInclude:
+        PunktDe.EPaper: true
+
+  Flow:
+    mvc:
+      routes:
+        PunktDe.EPaper:
+          position: 'start'

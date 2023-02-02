@@ -1,0 +1,23 @@
+{
+    "description": "E-Paper Management",
+    "type": "neos-package",
+    "name": "punktde/epaper",
+    "require": {
+        "neos/neos": "^5.0 || ^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "PunktDe\\EPaper\\": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "PunktDe.EPaper"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "neos/composer-plugin": true
+        }
+    }
+}
