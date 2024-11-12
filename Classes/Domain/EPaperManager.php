@@ -60,7 +60,7 @@ class EPaperManager
 
     /**
      * @var ArchiveExtractorInterface
-     * @Flow\Inject 
+     * @Flow\Inject
      */
     protected $archiveExtractor;
 
@@ -84,10 +84,10 @@ class EPaperManager
         $this->ePaperDirectory = Files::concatenatePaths([$this->extractedPaperCacheDir, $this->nodeIdentifier]);
         $this->archiveExtractor->setLogger($this->logger);
 
-        if (!$this->extractedEPaperDirectoryExists()) {
-            $asset = $this->findEPaperArchive();
-            $this->extractArchive($asset);
-        }
+//        if (!$this->extractedEPaperDirectoryExists()) {
+//            $asset = $this->findEPaperArchive();
+//            $this->extractArchive($asset);
+//        }
 
 //        $this->checkMapAccess();
     }
@@ -153,7 +153,7 @@ class EPaperManager
     /**
      * @return bool
      */
-    protected function extractedEPaperDirectoryExists(): bool
+    public function extractedEPaperDirectoryExists(): bool
     {
         return file_exists(Files::concatenatePaths([$this->ePaperDirectory, 'index.html']));
     }
@@ -168,7 +168,7 @@ class EPaperManager
     {
         $linkNode = $this->getEPaperLinkNode();
 
-        if (!$linkNode->hasProperty('ePaper') || !($linkNode->getProperty('ePaper') instanceof AssetInterface)) {
+        if (!$linkNode->hasProperty('ePaper')) {
             throw new NodeHasNoEPaperArchiveException(sprintf('No e-paper archive was referenced in EPaperLink Element %s', $linkNode->getIdentifier()), 1624373833);
         }
 

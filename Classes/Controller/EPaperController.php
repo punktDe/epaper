@@ -21,6 +21,12 @@ class EPaperController extends ActionController
     public function serveAction(string $nodeIdentifier, string $filePath): string
     {
         $ePaperManager = new EPaperManager($nodeIdentifier);
+
+        if (!$ePaperManager->extractedEPaperDirectoryExists()) {
+            $asset = $ePaperManager->findEPaperArchive();
+            $ePaperManager->extractArchive($asset);
+        }
+
         $absoluteFilePath = $ePaperManager->resolveAbsoluteFilePath($filePath);
         if ($absoluteFilePath === '') {
             $this->response->setStatusCode(404);
