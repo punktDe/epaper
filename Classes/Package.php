@@ -8,7 +8,7 @@ namespace PunktDe\EPaper;
 
 use Neos\Flow\Core\Bootstrap;
 use Neos\Flow\Package\Package as BasePackage;
-use Neos\Neos\Controller\Backend\ContentController;
+use Neos\ContentRepository\Domain\Model\Workspace;
 use PunktDe\EPaper\AssetOperations\EPaperUploadOperation;
 
 class Package extends BasePackage
@@ -22,6 +22,6 @@ class Package extends BasePackage
     {
         $dispatcher = $bootstrap->getSignalSlotDispatcher();
 
-        $dispatcher->connect(ContentController::class, 'assetUploaded', EPaperUploadOperation::class, '::rebuildCache');
+        $dispatcher->connect(Workspace::class, 'afterNodePublishing', EPaperUploadOperation::class, '::rebuildCache');
     }
 }

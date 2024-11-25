@@ -60,7 +60,7 @@ class EPaperManager
 
     /**
      * @var ArchiveExtractorInterface
-     * @Flow\Inject 
+     * @Flow\Inject
      */
     protected $archiveExtractor;
 
@@ -83,45 +83,7 @@ class EPaperManager
     {
         $this->ePaperDirectory = Files::concatenatePaths([$this->extractedPaperCacheDir, $this->nodeIdentifier]);
         $this->archiveExtractor->setLogger($this->logger);
-
-        if (!$this->extractedEPaperDirectoryExists()) {
-            $asset = $this->findEPaperArchive();
-            $this->extractArchive($asset);
-        }
-
-//        $this->checkMapAccess();
     }
-
-//    /**
-//     * @return bool
-//     * @throws AccessDeniedException
-//     * @throws NodeNotFoundException
-//     * @throws \Exception
-//     */
-//    private function checkMapAccess(): bool
-//    {
-//        $ePaperAccessKey = 'ePaperAccess_' . $this->nodeIdentifier;
-//        $accessible = null;
-//
-//        if ($this->session->isStarted() === false) {
-//            $this->session->start();
-//        }
-//
-//        if ($this->session->hasKey($ePaperAccessKey)) {
-//            $accessible = $this->session->getData($ePaperAccessKey);
-//        }
-//
-//        if ($accessible === null) {
-//            $accessible = (new SecurableContentService())->isContentAccessible($this->getEPaperLinkNode());
-//            $this->session->putData($ePaperAccessKey, $accessible);
-//        }
-//
-//        if ($accessible !== true) {
-//            throw new AccessDeniedException('Access to requested publication was denied', 1526144111);
-//        }
-//
-//        return true;
-//    }
 
     /**
      * @param string $filePath
@@ -153,7 +115,7 @@ class EPaperManager
     /**
      * @return bool
      */
-    protected function extractedEPaperDirectoryExists(): bool
+    public function extractedEPaperDirectoryExists(): bool
     {
         return file_exists(Files::concatenatePaths([$this->ePaperDirectory, 'index.html']));
     }
@@ -168,7 +130,7 @@ class EPaperManager
     {
         $linkNode = $this->getEPaperLinkNode();
 
-        if (!$linkNode->hasProperty('ePaper') || !($linkNode->getProperty('ePaper') instanceof AssetInterface)) {
+        if (!$linkNode->hasProperty('ePaper')) {
             throw new NodeHasNoEPaperArchiveException(sprintf('No e-paper archive was referenced in EPaperLink Element %s', $linkNode->getIdentifier()), 1624373833);
         }
 
