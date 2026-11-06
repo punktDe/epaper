@@ -1,6 +1,7 @@
 {
     "description": "E-Paper Management",
     "type": "neos-package",
+    "license": "MIT",
     "name": "punktde/epaper",
     "require": {
         "neos/neos": "^5.0 || ^7.0"
